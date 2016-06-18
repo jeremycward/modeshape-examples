@@ -24,6 +24,8 @@
         <!-- Global dependency version information-->
         <version.modeshape>5.1.0.Final</version.modeshape>
         <version.junit>4.11</version.junit>
+        <skipTests>true</skipTests>
+        <cargo.maven.skip>false</cargo.maven.skip>
     </properties>
 
     <dependencyManagement>
@@ -40,12 +42,50 @@
 
     <dependencies>
         <!--This is the default WAR WebDAV-Service which Maven will overlay with the custom files & dependencies from this project -->
+        <!--<dependency>-->
+            <!--<groupId>org.modeshape</groupId>-->
+            <!--<artifactId>modeshape-web-jcr-webdav-war</artifactId>-->
+            <!--<type>war</type>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+
+        <!-- http://mvnrepository.com/artifact/org.fcrepo/fcrepo-webapp-fedora -->
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
         <dependency>
             <groupId>org.modeshape</groupId>
-            <artifactId>modeshape-web-jcr-webdav-war</artifactId>
-            <type>war</type>
-            <scope>runtime</scope>
+            <artifactId>modeshape-jcr</artifactId>
+            <version>5.0.0.Final</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.orbit</groupId>
+            <artifactId>javax.servlet.jsp</artifactId>
+            <version>2.2.0.v201112011158</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.orbit</groupId>
+            <artifactId>org.apache.jasper.glassfish</artifactId>
+            <version>2.2.2.v201112011158</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.fcrepo</groupId>
+            <artifactId>fcrepo-webapp</artifactId>
+            <version>4.5.1</version>
+            <type>war</type>
+        </dependency>
+
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -68,11 +108,12 @@
                     <overlays>
                         <overlay>
                             <id>exclude-default-config</id>
-                            <groupId>org.modeshape</groupId>
-                            <artifactId>modeshape-web-jcr-webdav-war</artifactId>
-                            <excludes>
-                                <exclude>**/*.json</exclude>
-                            </excludes>
+                            <groupId>org.fcrepo</groupId>
+                            <artifactId>fcrepo-webapp</artifactId>
+
+                            <!--<excludes>-->
+                                <!--<exclude>**/*.json</exclude>-->
+                            <!--</excludes>-->
                         </overlay>
                     </overlays>
                 </configuration>
@@ -110,12 +151,26 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <skip>${skipTests}</skip>
+                    <skip>false</skip>
                     <container>
                         <containerId>${cargo.container}</containerId>
                         <log>${project.build.directory}/cargo.log</log>
                         <home>${project.build.directory}/cargo</home>
                         <type>embedded</type>
+                        <dependencies>
+                        <dependency>
+                            <groupId>org.eclipse.jetty.orbit</groupId>
+                            <artifactId>javax.servlet.jsp</artifactId>
+
+                        </dependency>
+                        <dependency>
+                            <groupId>org.eclipse.jetty.orbit</groupId>
+                            <artifactId>org.apache.jasper.glassfish</artifactId>
+
+                        </dependency>
+                        </dependencies>
+
+
                     </container>
                     <configuration >
                         <properties>
@@ -136,9 +191,15 @@
         </plugins>
     </build>
     <repositories>
+
+        <!--<repository>-->
+            <!--<id>JBoss</id>-->
+            <!--<url>https://repository.jboss.org/nexus/content/groups/public/</url>-->
+        <!--</repository>-->
         <repository>
-            <id>JBoss</id>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <id>MvnRepo</id>
+            <url>https://mvnrepository.com/artifact/</url>
         </repository>
+
     </repositories>
 </project>
