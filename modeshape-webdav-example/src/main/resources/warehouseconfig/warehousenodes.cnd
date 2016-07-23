@@ -1,0 +1,25 @@
+<whouse='http://nomura.com.warehouse'>
+
+
+[whouse:whbase] > nt:folder
+
+
+[whouse:remoteSite] > whouse:whbase abstract
+
+
+[whouse:ftpSite] > whouse:remoteSite
+
+
+
+[whouse:importFolder] > whouse:whbase
+
+
+[whouse:import] > whouse:whbase
+
+
+
+
+
+
+
+

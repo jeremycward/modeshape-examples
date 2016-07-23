@@ -42,7 +42,7 @@ public class RepositoryController {
     @Autowired
     private Repository repository;
 
-    @RequestMapping(value = "/", method = {RequestMethod.GET}, produces = "text/html; charset=utf-8")
+    @RequestMapping(value = {"/","/modeshape-spring-security-example/"}, method = {RequestMethod.GET}, produces = "text/html; charset=utf-8")
     public
     @ResponseBody
     String jcrLogin(Authentication auth) {

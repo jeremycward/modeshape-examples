@@ -1,4 +1,4 @@
-/*
+package com.giga.warehouse;/*
  * ModeShape (http://www.modeshape.org)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,9 @@
 import static org.junit.Assert.assertEquals;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -26,11 +29,27 @@ import org.junit.Test;
  */
 public class RestExampleIT {
 
+    @Before
+    public void jetty()throws Exception{
+        JettyServer server = new JettyServer(8181);
+        server.start();
+
+
+    }
+
     @Test
     public void shouldAccessInitialPage() throws Exception {
-        URL url = new URL("http://localhost:8090/modeshape-rest-example/sample/default/items/imagesContainer");
+        URL url = new URL("http://localhost:8181/modeshape-rest-example/restful-services/warehouse");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
+        connection.setRequestProperty("Accept","application/json");
+        //connection.set
+
         assertEquals(200, connection.getResponseCode());
+
+
+        System.out.println(IOUtils.toString(connection.getInputStream()));
+        System.out.println(connection.getContentType());
+
     }
 }

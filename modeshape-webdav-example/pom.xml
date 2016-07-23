@@ -41,15 +41,15 @@
     </dependencyManagement>
 
     <dependencies>
-        <!--This is the default WAR WebDAV-Service which Maven will overlay with the custom files & dependencies from this project -->
-        <!--<dependency>-->
-            <!--<groupId>org.modeshape</groupId>-->
-            <!--<artifactId>modeshape-web-jcr-webdav-war</artifactId>-->
-            <!--<type>war</type>-->
-            <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
 
-        <!-- http://mvnrepository.com/artifact/org.fcrepo/fcrepo-webapp-fedora -->
+        <dependency>
+            <groupId>org.modeshape</groupId>
+            <artifactId>modeshape-web-jcr-webdav-war</artifactId>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+
+
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -95,6 +95,11 @@
             <artifactId>junit</artifactId>
             <version>${version.junit}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
         </dependency>
     </dependencies>
 
@@ -188,6 +193,13 @@
                     </deployables>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.11.v20150529</version>
+            </plugin>
+
         </plugins>
     </build>
     <repositories>

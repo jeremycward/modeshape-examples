@@ -1,0 +1,44 @@
+<whouse='http://nomura.com.warehouse'>
+
+[whouse:whbase] > nt:folder
+
+[whouse:authentication] mixin
+
+[whouse:uidpwd] > whouse:authentication
+ - whouse:userid (string) mandatory
+ - whouse:password (string) mandatory
+
+[whouse:remoteSite] > whouse:whbase abstract
+  - whouse:hostname (string) mandatory
+
+
+[whouse:ftpSite] > whouse:remoteSite, whouse:uidpwd
+ - whouse:portNumber (string) mandatory
+
+[whouse:import] > nt:resource
+ -whouse:importKey (string) mandatory
+
+
+[whouse:importer] > whouse:whbase
+
+[whouse:ftpimporter] > whouse:importer
+ - whouse:initialDirectory  (string) mandatory
+ - whouse:filter  (string) mandatory multiple
+ + * (nt:resource)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

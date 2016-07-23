@@ -1,11 +1,11 @@
 {
-    "name" : "sample",
+    "name" : "warehouse",
     "jndiName" : "",
     "workspaces" : {
-        "default" : "default",
+        "default" : "financialSites",
         "allowCreation" : true ,
         "initialContent" : {
-            "default" : "initial_content.xml"
+            "financialSites" : "initial_content.xml"
         }
     },
     "security" : {
@@ -21,13 +21,6 @@
             "minimumBinarySizeInBytes" : 999
         }
     },
-    "sequencing" : {
-        "sequencers" : {
-            // a custom sequencer via which we'll validate that the WAR dependencies are correctly configured
-            "Images sequencer" : {
-                "classname" : "ImageSequencer",
-                "pathExpression" : "default://imagesContainer[@image] => default:/sequenced/images"
-            }
-        }
-    }
+    "node-types" : ["warehousenodes.cnd"]
+
 }

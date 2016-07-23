@@ -29,6 +29,7 @@
         <version.jstl>1.2</version.jstl>
         <version.jsp>2.0</version.jsp>
         <version.junit>4.11</version.junit>
+        <skipTests>false</skipTests>
     </properties>
 
     <dependencyManagement>

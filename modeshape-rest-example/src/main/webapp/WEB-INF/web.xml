@@ -32,6 +32,11 @@
         <param-value>org.modeshape.web.jcr.rest.JcrApplication</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>resteasy.servlet.mapping.prefix</param-name>
+        <param-value>/restful-services</param-value>
+    </context-param>
+
     <!-- Required parameter for RESTEasy - should not be modified -->
     <listener>
         <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
@@ -50,7 +55,7 @@
 
     <!-- Required parameter for ModeShape REST - should not be modified -->
     <servlet-mapping>
-        <servlet-name>Resteasy</servlet-name>
-        <url-pattern>/*</url-pattern>
+       <servlet-name>Resteasy</servlet-name>
+        <url-pattern>/restful-services/*</url-pattern>
     </servlet-mapping>
 </web-app>

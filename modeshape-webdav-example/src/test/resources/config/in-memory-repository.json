@@ -1,0 +1,10 @@
+{
+    "name" : "testRepo",
+    "storage" : {
+        "persistence": {
+            "type": "mem"
+        }
+    },
+    "node-types" : ["fedora-node-types.cnd","warehouseconfig/warehousenodes.cnd"]
+
+}
