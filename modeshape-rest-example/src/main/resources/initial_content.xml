@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:whouse="http://nomura.com.warehouse" >
-
-
     <bbg jcr:primaryType="whouse:ftpSite" whouse:hostname="wwww.ft.com" whouse:portNumber="22"  whouse:password="pwd" whouse:userid="userid" jcr:name="Bloomberg">
         <futures jcr:primaryType="whouse:ftpimporter" whouse:initialDirectory="/futures" whouse:filter="*.csv">
-            <sept302016 jcr:name="20160930" jcr:primaryType="whouse:import" whouse:importKey="20160930" jcr:data="hello.gif"></sept302016>
-            <oct012016 jcr:name="20161010" jcr:primaryType="whouse:import" whouse:importKey="20161010" jcr:data="hello.gif"></oct012016>
         </futures>
 
     </bbg>
-
-
-
    <ft jcr:primaryType="whouse:ftpSite" whouse:hostname="wwww.ft.com" whouse:portNumber="22"  whouse:password="pwd" whouse:userid="userid" jcr:name="Financial Times">
        <equities jcr:primaryType="whouse:ftpimporter" whouse:initialDirectory="/equities" whouse:filter="*.csv" >
 
        </equities>
        <futures jcr:primaryType="whouse:ftpimporter" whouse:initialDirectory="/futures" whouse:filter="*.csv">
-           <jun302016 jcr:primaryType="whouse:import" whouse:importKey="20160630" jcr:data="ftp.gif"></jun302016>
+
        </futures>
 
        <options jcr:primaryType="whouse:ftpimporter" whouse:initialDirectory="/options" whouse:filter="*.csv">
